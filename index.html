@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Digital Clock</title>
+</head>
+<body>
+    <div class="con">
+        <p class="time"></p>
+    </div>
+</body>
+<script>
+    var time = document.querySelector('.time');
+    function displayTime() {
+        var day = new Date();
+        var hrs = day.getHours();
+        var min = day.getMinutes();
+        var sec = day.getSeconds();
+        var amOrPm = "AM";
+
+        if(hrs >= 12){
+            amOrPm = 'PM';
+        }
+        hrs = hrs > 12 ? hrs - 12 : hrs;
+        hrs = hrs < 10 ? '0' + hrs : hrs;
+        min = min < 10 ? '0' + min : min;
+        sec = sec < 10 ? '0' + sec : sec;
+
+        time.innerHTML = hrs + ':' + min + ':' + sec + ':' + amOrPm;
+    }
+    setInterval(displayTime,1000);
+</script>
+</html>
